@@ -6,8 +6,9 @@ import mongoose from 'mongoose';
 
 let app = express();
 
+const mongodbUrl = process.env.MONGODB_URL || 'localhost:27017';
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/UserDb', {useNewUrlParser: true});
+mongoose.connect('mongodb://' + mongodbUrl + '/UserDb', {useNewUrlParser: true});
 
 const port = process.env.PORT || 3001;
 
