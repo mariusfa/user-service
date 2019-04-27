@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
+import { TabButton } from './components/Buttons';
 
 
 const AppContainer = styled.div`
@@ -21,23 +22,7 @@ const AppText = styled.div`
 
 const UserContainer = styled.div`
   margin: 1rem auto;
-  border: 1px solid cornflowerblue;
-  width: 50%;
-`;
-
-
-const LoginTabButton = styled.button`
-  color: cornflowerblue;
-  background-color: white;
   border: none;
-  width: 50%;
-`;
-  
-
-const RegisterTabButton = styled.button`
-  color: cornflowerblue;
-  background-color: white;
-  border: 2px solid cornflowerblue;
   width: 50%;
 `;
 
@@ -47,6 +32,12 @@ const TabContainer = styled.div`
 `;
 
 function App() {
+  const [isLogin, setLogin] = useState(true);
+
+  function onSelect() {
+    setLogin(!isLogin);
+  }
+
   return(
     <div>
       <AppHeader>
@@ -56,10 +47,14 @@ function App() {
       </AppHeader>
       <UserContainer>
         <TabContainer>
-          <LoginTabButton>Login</LoginTabButton>
-          <RegisterTabButton>Register</RegisterTabButton>
+          <TabButton clicked={isLogin} onClick={onSelect}>Login</TabButton>
+          <TabButton clicked={!isLogin} onClick={onSelect}>Register</TabButton>
         </TabContainer>
-        placeholder
+        {isLogin ? (
+          <div>Login</div>
+        ) : (
+          <div>Register</div>
+        )}
       </UserContainer>
     </div>
   );
