@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from 'styled-components';
-import { TabButton } from './components/Buttons';
-
-
-const AppContainer = styled.div`
-`;
+import User from './components/User';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 const AppHeader = styled.div`
   padding: 1rem;
@@ -20,24 +17,7 @@ const AppText = styled.div`
   font-size: 3rem;
 `;
 
-const UserContainer = styled.div`
-  margin: 1rem auto;
-  border: none;
-  width: 50%;
-`;
-
-const TabContainer = styled.div`
-  width: 100%;
-  padding: 0;
-`;
-
 function App() {
-  const [isLogin, setLogin] = useState(true);
-
-  function onSelect() {
-    setLogin(!isLogin);
-  }
-
   return(
     <div>
       <AppHeader>
@@ -45,17 +25,9 @@ function App() {
           User service
         </AppText>
       </AppHeader>
-      <UserContainer>
-        <TabContainer>
-          <TabButton clicked={isLogin} onClick={onSelect}>Login</TabButton>
-          <TabButton clicked={!isLogin} onClick={onSelect}>Register</TabButton>
-        </TabContainer>
-        {isLogin ? (
-          <div>Login</div>
-        ) : (
-          <div>Register</div>
-        )}
-      </UserContainer>
+      <Router>
+        <Route path="/login/" component={User} />
+      </Router>
     </div>
   );
 }
