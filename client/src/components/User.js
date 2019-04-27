@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { TabButton } from './Buttons';
 import styled from 'styled-components';
+import Register from './Register';
+import Login from './Login';
 
 const UserContainer = styled.div`
   margin: 1rem auto;
@@ -27,10 +29,10 @@ function User() {
           Login
         </TabButton>
         <TabButton clicked={!isLogin} onClick={onSelect}>
-          Register
+          Regiser
         </TabButton>
       </TabContainer>
-      {isLogin ? <div>Login</div> : <div>Register</div>}
+      {isLogin ? <Login/> : <Register/>}
     </UserContainer>
   );
 }

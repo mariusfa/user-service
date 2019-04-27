@@ -8,4 +8,20 @@ const TabButton = styled.button`
   outline: none;
 `;
 
-export { TabButton };
+const DefaultButton = styled.button`
+  color: white;
+  background-color: cornflowerblue;
+  width: 10rem;
+  outline: none;
+  border: none;
+`;
+
+const RegisterButton = DefaultButton;
+
+const LoginButton = DefaultButton;
+
+export { 
+  TabButton,
+  RegisterButton,
+  LoginButton
+ };
