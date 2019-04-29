@@ -15,7 +15,7 @@ const TabContainer = styled.div`
   padding: 0;
 `;
 
-function User() {
+function User(props) {
   const [isLogin, setLogin] = useState(true);
 
   function onSelect() {
@@ -32,7 +32,7 @@ function User() {
           Regiser
         </TabButton>
       </TabContainer>
-      {isLogin ? <Login/> : <Register/>}
+      {isLogin ? <Login history={props.history}/> : <Register/>}
     </UserContainer>
   );
 }
