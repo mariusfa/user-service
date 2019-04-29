@@ -20,8 +20,11 @@ const RegisterButton = DefaultButton;
 
 const LoginButton = DefaultButton;
 
+const LogoutButton = DefaultButton;
+
 export { 
   TabButton,
   RegisterButton,
-  LoginButton
+  LoginButton,
+  LogoutButton
  };
