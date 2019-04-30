@@ -25,7 +25,7 @@ function Register() {
   }
 
   function onRegister() {
-    if (password == password2) {
+    if (password === password2) {
       fetch(API_URL + '/api/auth/register', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
