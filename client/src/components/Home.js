@@ -7,6 +7,11 @@ const HomeContainer = styled.div`
   text-align: center;
 `
 
+const WelcomeContainer = styled.p`
+  font-size: 2em;
+  font-family: sans-serif;
+`;
+
 function Home() {
   const userContext = useContext(UserContext);
 
@@ -19,9 +24,9 @@ function Home() {
 
   return (
     <HomeContainer>
-      <p>
+      <WelcomeContainer>
         Welcome {userContext.data} 
-      </p>
+      </WelcomeContainer>
       <LogoutButton onClick={onLogout}>Log out</LogoutButton>
     </HomeContainer>
   );
