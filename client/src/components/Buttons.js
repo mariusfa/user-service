@@ -14,6 +14,9 @@ const DefaultButton = styled.button`
   width: 10rem;
   outline: none;
   border: none;
+  border-radius: 2px;
+  padding: 5px;
+  font-size: 1em;
 `;
 
 const RegisterButton = DefaultButton;
