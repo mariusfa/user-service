@@ -5,6 +5,10 @@ import { Input } from "./Inputs";
 import { API_URL } from "../AppConfig";
 import { UserContext }  from "../contexts/UserContext";
 
+const LoginContainer = styled.div`
+  text-align: center;
+`;
+
 function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -33,11 +37,14 @@ function Login(props) {
         props.history.push('/');
         userContext.setData(username);
         console.log(userContext);
+      })
+      .catch(error => {
+        console.log(error);
       });
   }
 
   return (
-    <div>
+    <LoginContainer>
       <Input
         placeholder="Username"
         value={username}
@@ -49,7 +56,7 @@ function Login(props) {
         onChange={changePassword}
       />
       <LoginButton onClick={onLogin}>Login</LoginButton>
-    </div>
+    </LoginContainer>
   );
 }
 

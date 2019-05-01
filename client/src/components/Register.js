@@ -5,6 +5,7 @@ import { Input } from './Inputs';
 import  { API_URL } from '../AppConfig';
 
 const RegisterContainer = styled.div`
+  text-align: center;
 `;
 
 function Register() {
