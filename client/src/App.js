@@ -38,9 +38,12 @@ function PrivateRoute({ component: Component, ...rest }) {
           if (res.username) {
             userContext.setData(res.username);
           } else {
-            localStorage.removeItem("token");
-            window.location.replace("login");
+            throw Error("Unauthorized");
           }
+        })
+        .catch(error => {
+          localStorage.removeItem("token");
+          window.location.replace("/login");
         });
       return true;
     } else {
