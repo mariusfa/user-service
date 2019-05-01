@@ -3,6 +3,10 @@ import styled from "styled-components";
 import { LogoutButton } from './Buttons'
 import { UserContext } from "../contexts/UserContext";
 
+const HomeContainer = styled.div`
+  text-align: center;
+`
+
 function Home() {
   const userContext = useContext(UserContext);
 
@@ -14,12 +18,12 @@ function Home() {
   }
 
   return (
-    <div>
-      <div>
+    <HomeContainer>
+      <p>
         Welcome {userContext.data} 
-      </div>
+      </p>
       <LogoutButton onClick={onLogout}>Log out</LogoutButton>
-    </div>
+    </HomeContainer>
   );
 }
 
