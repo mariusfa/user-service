@@ -4,10 +4,15 @@ import bodyParser from 'body-parser';
 import userRoutes from  './routes/user.server.routes';
 import mongoose from 'mongoose';
 
+process.on('SIGINT', function() {
+    process.exit();
+});
+
 let app = express();
 
+const DB_HOST = process.env.DB_HOST | 'localhost';
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/UserDb', {useNewUrlParser: true});
+mongoose.connect('mongodb://' + DB_HOST + '/UserDb', {useNewUrlParser: true});
 
 const port = process.env.PORT || 3001;
 
