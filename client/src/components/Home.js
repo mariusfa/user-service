@@ -10,6 +10,7 @@ const HomeContainer = styled.div`
 const WelcomeContainer = styled.p`
   font-size: 2em;
   font-family: sans-serif;
+  color: darkblue;
 `;
 
 function Home() {

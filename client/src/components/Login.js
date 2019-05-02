@@ -4,6 +4,7 @@ import { LoginButton } from "./Buttons";
 import { Input } from "./Inputs";
 import { API_URL } from "../AppConfig";
 import { UserContext }  from "../contexts/UserContext";
+import { ErrorContainer } from "./MessageContainers";
 
 const LoginContainer = styled.div`
   text-align: center;
@@ -12,6 +13,7 @@ const LoginContainer = styled.div`
 function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isError, setIsError] = useState(false);
   const userContext = useContext(UserContext);
 
   function changeUsername(event) {
@@ -23,6 +25,7 @@ function Login(props) {
   }
 
   function onLogin() {
+    setIsError(false);
     fetch(API_URL + "/api/auth/signin", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -31,7 +34,13 @@ function Login(props) {
         password: password
       })
     })
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          throw Error();
+        }
+      })
       .then(res => {
         localStorage.setItem("token", res.token);
         props.history.push('/');
@@ -39,6 +48,7 @@ function Login(props) {
         console.log(userContext);
       })
       .catch(error => {
+        setIsError(true);
         console.log(error);
       });
   }
@@ -57,6 +67,11 @@ function Login(props) {
         onChange={changePassword}
       />
       <LoginButton onClick={onLogin}>Login</LoginButton>
+      { isError &&
+        <ErrorContainer>
+          Failed to login. Please try again!
+        </ErrorContainer>
+      }
     </LoginContainer>
   );
 }

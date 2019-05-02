@@ -3,17 +3,10 @@ import styled from 'styled-components';
 import { RegisterButton } from './Buttons';
 import { Input } from './Inputs';
 import  { API_URL } from '../AppConfig';
+import { SuccessContainer, ErrorContainer } from './MessageContainers';
 
 const RegisterContainer = styled.div`
   text-align: center;
-`;
-
-const SuccessContainer = styled.p`
-  color: green;
-`;
-
-const ErrorContainer = styled.p`
-  color: red;
 `;
 
 function Register() {
