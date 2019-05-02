@@ -22,9 +22,9 @@ export function register(req, res) {
                 }
             });
         } else {
-            res.json({
-                message: 'Username taken'
-            });
+            return res.status(409).send({
+                message: "Username taken"
+            })
         }
     })
 }
