@@ -6,6 +6,13 @@ const TabButton = styled.button`
   border: ${props => props.clicked ? "2px solid cornflowerblue" : "none" };
   width: 50%;
   outline: none;
+  padding: 0.3rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const DefaultButton = styled.button`
@@ -14,9 +21,13 @@ const DefaultButton = styled.button`
   width: 10rem;
   outline: none;
   border: none;
-  border-radius: 2px;
-  padding: 5px;
+  border-radius: 5px;
+  padding: 0.5rem;
   font-size: 1em;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const RegisterButton = DefaultButton;

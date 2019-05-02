@@ -12,7 +12,7 @@ const UserContainer = styled.div`
 
 const TabContainer = styled.div`
   width: 100%;
-  padding: 0;
+  margin: 2rem;
 `;
 
 function User(props) {
@@ -29,7 +29,7 @@ function User(props) {
           Login
         </TabButton>
         <TabButton clicked={!isLogin} onClick={onSelect}>
-          Regiser
+          Register
         </TabButton>
       </TabContainer>
       {isLogin ? <Login history={props.history}/> : <Register/>}

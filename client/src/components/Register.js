@@ -49,7 +49,6 @@ function Register() {
         })
       })
         .then(res => {
-          console.log(res);
           if (res.ok) {
             setSuccess(true)
             setUsername("");

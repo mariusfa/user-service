@@ -6,7 +6,6 @@ function UserProvider(props) {
   const [user, setUser] = useState("test");
 
   function changeUser(username) {
-    console.log(username);
     setUser(username);
   }
 

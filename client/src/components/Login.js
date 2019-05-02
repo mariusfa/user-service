@@ -52,6 +52,7 @@ function Login(props) {
       />
       <Input
         placeholder="Password"
+        type="password"
         value={password}
         onChange={changePassword}
       />

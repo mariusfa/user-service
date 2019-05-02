@@ -17,7 +17,6 @@ function Home() {
 
   function onLogout() {
     localStorage.removeItem('token');
-    console.log(userContext.data);
     
     window.location.replace('/');
   }
