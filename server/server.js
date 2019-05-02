@@ -10,9 +10,15 @@ process.on('SIGINT', function() {
 
 let app = express();
 
-const DB_HOST = process.env.DB_HOST | 'localhost';
+const DB_HOST = process.env.DB_HOST || "localhost";
+const DB_URL = "mongodb://" + DB_HOST + ":27017/UserDb"
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://' + DB_HOST + '/UserDb', {useNewUrlParser: true});
+mongoose.connect(DB_URL, {useNewUrlParser: true}, (error) => {
+    if (error) {
+        console.log("Could not connect to mongodb: " + DB_URL)
+        process.exit();
+    }
+});
 
 const port = process.env.PORT || 3001;
 

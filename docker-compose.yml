@@ -1,0 +1,45 @@
+version: '2.2'
+
+services:
+  user-service-client:
+    build: ./client/
+    image: user-service-client
+    container_name: client
+    ports: 
+      - "3000:3000"
+    depends_on:
+      user-service-server:
+        condition: service_healthy
+  
+  user-service-server:
+    build: ./server/
+    image: user-service-server
+    container_name: server
+    ports:
+      - "3001:3001"
+    environment:
+      - DB_HOST=mongo
+    networks:
+      - backend
+    depends_on:
+      mongo:
+        condition: service_healthy
+    
+
+  mongo:
+    image: mongo:3.6
+    container_name: mongo
+    ports: 
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=UserDb
+    networks:
+      - backend
+    healthcheck:
+      test: "[ `echo 'db.runCommand(\"ping\").ok' | mongo localhost/UserDb --quiet` ] && echo 0 || echo 1"
+      interval: 5s
+      timeout: 4s
+      retries: 3
+
+networks:
+  backend:

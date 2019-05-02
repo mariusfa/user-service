@@ -16,7 +16,7 @@ RUN npm install --no-optional && npm cache clean --force
 
 # Health check for application.
 # In case app is broken, but docker sees it as running
-HEALTHCHECK --interval=30s CMD node healthcheck.js
+HEALTHCHECK --interval=10s CMD node healthcheck.js
 
 COPY . .
 
