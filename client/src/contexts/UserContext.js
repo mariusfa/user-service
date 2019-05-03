@@ -3,17 +3,13 @@ import React, { useState } from "react";
 const UserContext = React.createContext();
 
 function UserProvider(props) {
-  const [user, setUser] = useState("test");
-
-  function changeUser(username) {
-    setUser(username);
-  }
+  const [user, setUser] = useState("");
 
   return(
       <UserContext.Provider
         value={{
-          data: user,
-          setData: changeUser
+          user: user,
+          setUser: setUser
           
         }}
       >

@@ -36,7 +36,7 @@ function PrivateRoute({ component: Component, ...rest }) {
         .then(res => res.json())
         .then(res => {
           if (res.username) {
-            userContext.setData(res.username);
+            userContext.setUser(res.username);
           } else {
             throw Error("Unauthorized");
           }

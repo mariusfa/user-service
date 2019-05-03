@@ -25,7 +25,7 @@ function Home() {
   return (
     <HomeContainer>
       <WelcomeContainer>
-        Welcome {userContext.data} 
+        Welcome {userContext.user} 
       </WelcomeContainer>
       <LogoutButton onClick={onLogout}>Log out</LogoutButton>
     </HomeContainer>

@@ -44,8 +44,7 @@ function Login(props) {
       .then(res => {
         localStorage.setItem("token", res.token);
         props.history.push('/');
-        userContext.setData(username);
-        console.log(userContext);
+        userContext.setUser(username);
       })
       .catch(error => {
         setIsError(true);
