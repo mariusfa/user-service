@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const TabButton = styled.button`
-  color: cornflowerblue;
+  color: ${props => props.theme.main}
   background-color: white;
-  border: ${props => props.clicked ? "2px solid cornflowerblue" : "none" };
+  border: ${props => props.clicked ? "2px solid " + props.theme.main : "none" };
   width: 50%;
   outline: none;
   padding: 0.3rem;
@@ -17,7 +17,7 @@ const TabButton = styled.button`
 
 const DefaultButton = styled.button`
   color: white;
-  background-color: cornflowerblue;
+  background-color: ${props => props.theme.main};
   width: 10rem;
   outline: none;
   border: none;

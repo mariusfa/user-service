@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import theme from "./theme/theme";
 import User from "./components/User";
 import Home from "./components/Home";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
@@ -9,7 +10,7 @@ import { API_URL } from "./AppConfig";
 const AppHeader = styled.div`
   padding: 1rem;
   height: 3rem;
-  background-color: cornflowerblue;
+  background-color: ${props => props.theme.main};
   color: white;
 `;
 
@@ -67,15 +68,17 @@ function PrivateRoute({ component: Component, ...rest }) {
 
 function App() {
   return (
-    <UserProvider>
-      <AppHeader>
-        <AppText>User service</AppText>
-      </AppHeader>
-      <Router>
-        <PrivateRoute path="/" exact component={Home} />
-        <Route path="/login/" component={User} />
-      </Router>
-    </UserProvider>
+    <ThemeProvider theme={theme}>
+      <UserProvider>
+        <AppHeader>
+          <AppText>User service</AppText>
+        </AppHeader>
+        <Router>
+          <PrivateRoute path="/" exact component={Home} />
+          <Route path="/login/" component={User} />
+        </Router>
+      </UserProvider>
+    </ThemeProvider>
   );
 }
 
