@@ -8,6 +8,10 @@ process.on('SIGINT', function() {
     process.exit();
 });
 
+process.on('SIGTERM', function() {
+    process.exit();
+});
+
 let app = express();
 
 const DB_HOST = process.env.DB_HOST || "localhost";
