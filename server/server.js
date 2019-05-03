@@ -5,10 +5,12 @@ import userRoutes from  './routes/user.server.routes';
 import mongoose from 'mongoose';
 
 process.on('SIGINT', function() {
+    console.log("SIGINT received. Shutting down");
     process.exit();
 });
 
 process.on('SIGTERM', function() {
+    console.log("SIGTERM received. Graceful shutdown");
     process.exit();
 });
 
