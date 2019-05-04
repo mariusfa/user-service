@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-const UserContext = React.createContext();
+const UserContext = React.createContext({
+  user: "",
+  setUser: () => {}
+});
 
 function UserProvider(props) {
   const [user, setUser] = useState("");
