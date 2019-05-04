@@ -1,7 +1,6 @@
 # User service
 This is a project with both an api and a client.
 
-
 For the api setup see [here](server/README.md)
 
 For the client setup see [here](client/README.md)
