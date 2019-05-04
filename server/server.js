@@ -40,3 +40,5 @@ app.listen(port);
 
 console.log('User service running at: ' + port);
 
+// This is just for running tests
+export default app;
