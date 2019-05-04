@@ -1,5 +1,5 @@
 # User service
-This is a project with both an api and a client.
+This is a project with both an api and a client. The idea is a service to handle user register, login and validate token
 
 For the api setup see [here](server/README.md)
 
@@ -20,7 +20,7 @@ docker-compose build
 # This will build if it is the first time
 docker-compose up -d
 ```
-#### Clean everything after CTRL+C
+#### Clean everything up
 ```bash
 # Removing containers and networks
 docker-compose down
