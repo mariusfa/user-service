@@ -81,6 +81,12 @@ describe('User', () => {
     });
   });
 
+  after((done) => {
+    User.deleteOne({"username":test_user}, (err) => {
+      done();
+    });
+  });
+
 });
 
 describe('Admin', () => {
