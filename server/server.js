@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import userRoutes from  './routes/user.server.routes';
+import adminRoutes from './routes/admin.server.routes';
+import { registerAdmin } from './controllers/admin.server.controller';
 import mongoose from 'mongoose';
 
 process.on('SIGINT', function() {
@@ -24,6 +26,7 @@ mongoose.connect(DB_URL, {useNewUrlParser: true}, (error) => {
         console.log("Could not connect to mongodb: " + DB_URL)
         process.exit();
     }
+    registerAdmin();
 });
 
 const port = process.env.PORT || 3001;
@@ -35,6 +38,7 @@ app.use(cors());
 app.get('/', (req, res) => res.send('Hello world'));
 
 userRoutes(app);
+adminRoutes(app);
 
 app.listen(port);
 

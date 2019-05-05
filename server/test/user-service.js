@@ -1,6 +1,7 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server'; // By importing the app, the server will startup
+import { registerAdmin } from '../controllers/admin.server.controller';
 import User from '../models/user.server.model';
 
 chai.use(chaiHttp);
@@ -12,7 +13,7 @@ describe('User', () => {
   let token = "";
 
   before((done) => {
-    User.deleteMany({}, (err) => {
+    User.deleteOne({"username":test_user}, (err) => {
       done();
     });
   });
@@ -81,3 +82,56 @@ describe('User', () => {
   });
 
 });
+
+describe('Admin', () => {
+
+  let token = "";
+
+  describe('Admin loign' , () => {
+    it('It should be able to login admin', (done) => {
+      chai.request('http://localhost:3001')
+        .post('/api/auth/signin')
+        .set('Content-Type', 'application/json')
+        .send({
+          username: "admin",
+          password: "admin"
+        })
+        .end((err, res) => {
+          expect(err).to.be.null;
+          expect(res).to.have.status(200);
+          token = res.body.token;
+          done();
+        })
+    });
+  })
+
+  describe('List users' , () => {
+    it('It should list users', (done) => {
+      chai.request('http://localhost:3001')
+        .get('/api/admin/list')
+        .set('Content-Type', 'application/json')
+        .set('Authorization', 'Bearer ' + token)
+        .end(function(err, res) {
+          expect(err).to.be.null;
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
+  });
+
+  describe('Search users', () => {
+    it('It should search users', (done) => {
+      chai.request('http://localhost:3001')
+        .get('/api/admin/find')
+        .query({user: 'Admin'})
+        .set('Content-Type', 'application/json')
+        .set('Authorization', 'Bearer ' + token)
+        .end(function(err, res) {
+          expect(err).to.be.null;
+          expect(res).to.have.status(200);
+          expect(res.body.length).to.equal(1);
+          done();
+        });
+    })
+  })
+})

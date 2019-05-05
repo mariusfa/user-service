@@ -7,7 +7,12 @@ const Schema = mongoose.Schema;
 let UserSchema = new Schema({
     username: {
         type: String,
-        required: true
+        required: true,
+    },
+    username_lower: {
+        type: String,
+        required: true,
+        index: true
     },
     hash_password: {
         type: String,
@@ -22,5 +27,6 @@ let UserSchema = new Schema({
 UserSchema.methods.comparePassword = function (passord) {
     return bcrypt.compareSync(passord, this.hash_password);
 }
+
 
 export default mongoose.model('User', UserSchema);

@@ -3,7 +3,12 @@ import bcrypt from 'bcrypt';
 import User from '../models/user.server.model';
 
 export function register(req, res) {
-    let newUser = new User(req.body);
+    const username_lower = req.body.username.toLowerCase();
+    let newUser = new User({
+        username: req.body.username,
+        password: req.body.password,
+        username_lower: username_lower
+    });
     User.findOne({
         username: newUser.username
     }, function(err, user) {
