@@ -17,7 +17,7 @@ docker network ls
 # Create network
 docker network create user
 ```
-Staring mongodb with docker network:
+Starting mongodb with docker network:
 ```bash
 docker run -d --name mongo --network="user" -p 27017:27017 mongo:3.6
 ```
@@ -55,7 +55,7 @@ This will build a dev image:
 docker build -t user-service-server .
 ```
 
-### Staring docker image
+### Starting docker image
 For running api in docker image, mongodb need to be setup with docker network. 
 ```bash
 # Start api
