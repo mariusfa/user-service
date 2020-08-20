@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/mariufa/user-service#readme",
   "dependencies": {
-    "bcrypt": "^3.0.4",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "esm": "^3.2.4",
